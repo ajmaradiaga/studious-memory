@@ -1,0 +1,14 @@
+FROM node:alpine
+
+
+WORKDIR /app
+
+# Dependencies are included here
+COPY package.json .
+RUN npm install
+
+# Copying the rest of the files
+# Minimise build time
+COPY . .
+
+CMD ["npm", "run", "start"]
