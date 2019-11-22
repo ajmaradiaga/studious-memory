@@ -7,5 +7,16 @@ before_install:
 script:
   - docker run -e CI=true ajmaradiaga/studious-memory npm run test -- --coverage
 
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-west-1"
+  name: "studious-memory"
+  env: "StudiousMemory-Env"
+  bucket_name: "elasticbeanstalk-eu-west-1-899085916962"
+  bucket_path: "studious-memory"
+  on:
+    branch: "master"
+
+
 language: generic
 
